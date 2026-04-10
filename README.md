@@ -1,8 +1,6 @@
-# ProteusAI — Protein Structure Prediction with ESMFold + W&B
+# Protein Structure Prediction with ESMFold + W&B
 
 Real protein structure prediction pipeline for drug discovery, using ESMFold (Meta AI, 700M params) on 30 drug targets and 500 diverse proteins — tracked end-to-end in [Weights & Biases](https://wandb.ai).
-
-**Example W&B Project:** [View Demo Results](https://wandb.ai/Lorenzo-Team/proteus-fold)
 
 ## What This Is
 
