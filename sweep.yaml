@@ -1,0 +1,32 @@
+program: train_esm.py
+method: bayes
+name: esmfold-finetune-sweep
+metric:
+  name: val/rmsd
+  goal: minimize
+
+parameters:
+  lr:
+    distribution: log_uniform_values
+    min: 1.0e-6
+    max: 1.0e-3
+  weight_decay:
+    values: [0.0, 0.01, 0.1]
+  num_recycles:
+    values: [1, 2, 3, 4]
+  unfreeze_layers:
+    values: [0, 2, 4, 6]
+
+command:
+  - ${env}
+  - python3
+  - ${program}
+  - --mode=finetune
+  - --max-seq-len=128
+  - --epochs=6
+  - --data-dir=data_large
+  - --unfreeze-backbone
+  - --lr=${lr}
+  - --weight-decay=${weight_decay}
+  - --num-recycles=${num_recycles}
+  - --unfreeze-layers=${unfreeze_layers}
